@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render,redirect
-from .models import Profile
+from .models import Profile,UpdateProfileForm
 from django.contrib.auth.models import User
 # Create your views here.
 def home(request):
