@@ -3,6 +3,8 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
+from django import forms
+from django.forms import ModelForm, widgets
 
 # Create your models here.
 class Profile(models.Model):
@@ -40,4 +42,8 @@ class Profile(models.Model):
         profiles = cls.objects.filter(user__username__icontains=search_term).all()
         return profiles
 
+class UpdateProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio','profile_photo']
 

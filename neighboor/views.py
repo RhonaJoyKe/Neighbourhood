@@ -9,10 +9,10 @@ def profile(request,user_id):
 
     current_user=get_object_or_404(User,id=user_id)
     # current_user = request.user
-    projects = Project.objects.filter(user=current_user)
+    
     profile = Profile.objects.filter(id = current_user.id).first()
-    form=AddProjectForm()
-    return render(request, 'profile/profile.html', {"projects": projects,'form':form, "profile": profile})
+    
+    return render(request, 'profile/profile.html', {"profile": profile})
   
 def update_profile(request):
   	#Get the profile
