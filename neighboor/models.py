@@ -89,6 +89,13 @@ class Profile(models.Model):
     def search_profiles(cls, search_term):
         profiles = cls.objects.filter(user__username__icontains=search_term).all()
         return profiles
+# business class model
+class Business(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    description = models.TextField(blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
 
 class UpdateProfileForm(ModelForm):
     class Meta:
