@@ -99,6 +99,30 @@ class Business(models.Model):
     description = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+class Post(models.Model):
+    
+    title = models.CharField(max_length=50)
+    content = models.TextField(blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(
+        NeighbourHood, on_delete=models.CASCADE, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    # create post
+    def create_post(self):
+        self.save()
+
+    # delete post
+    def delete_post(self):
+        self.delete()
+
+    # update post
+    def update_post(self):
+        self.update()
+
 
 class UpdateProfileForm(ModelForm):
     class Meta:
