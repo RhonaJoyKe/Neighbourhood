@@ -60,7 +60,8 @@ class Profile(models.Model):
     profile_photo = CloudinaryField('image')
 
     bio = models.TextField(max_length=500, blank=True, null=True)
-
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
     contact = models.CharField(max_length=50, blank=True, null=True)
 
     def update(self):
