@@ -13,6 +13,7 @@ class Location(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
     # save location
     def save_location(self):
         self.save()
@@ -63,6 +64,8 @@ class Profile(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
     contact = models.CharField(max_length=50, blank=True, null=True)
+    joined_on=models.DateTimeField(auto_now=True)
+
 
     def update(self):
         self.save()
