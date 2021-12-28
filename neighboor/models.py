@@ -61,8 +61,8 @@ class Profile(models.Model):
     profile_photo = CloudinaryField('image')
 
     bio = models.TextField(max_length=500, blank=True, null=True)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE,null=True)
     contact = models.CharField(max_length=50, blank=True, null=True)
     joined_on=models.DateTimeField(auto_now=True)
 
@@ -75,6 +75,8 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
+    def __str__(self):
+        return self.user
 
     @classmethod
     def get_profile_by_user(cls, user):
@@ -99,6 +101,20 @@ class Business(models.Model):
     description = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+    # create business
+    def create_business(self):
+        self.save()
+
+    # delete business
+    def delete_business(self):
+        self.delete()
+
+    # update business
+    def update_business(self):
+        self.update()
+    
+    def __str__(self):
+        return self.name
 class Post(models.Model):
     
     title = models.CharField(max_length=50)
@@ -106,10 +122,9 @@ class Post(models.Model):
     image = CloudinaryField('image', blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    neighbourhood = models.ForeignKey(
-        NeighbourHood, on_delete=models.CASCADE, default=1)
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+   
 
     # create post
     def create_post(self):

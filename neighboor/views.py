@@ -10,7 +10,7 @@ def profile(request,user_id):
     current_user=get_object_or_404(User,id=user_id)
     # current_user = request.user
     
-    profile = Profile.objects.filter(id = current_user.id).first()
+    profile = Profile.objects.filter(user = current_user.id).first()
     
     return render(request, 'profile/profile.html', {"profile": profile})
   
