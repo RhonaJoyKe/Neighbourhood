@@ -1,4 +1,4 @@
-#!/home/moringaschool/Desktop/Django/IPS/Neighborhood/virtual/bin/python
+#!/home/moringa/Desktop/Django/Neighbourhood/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

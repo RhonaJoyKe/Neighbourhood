@@ -80,13 +80,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'neighbour',
-        'USER': 'moringaschool',
-        'PASSWORD': '12345'
+        'USER': 'moringa',
+        'PASSWORD': '12345',
+        'DB_HOST':'127.0.0.1'
     }
 }
 
 
 # Password validation
+
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
