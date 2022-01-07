@@ -1,11 +1,27 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render,redirect
 from .models import Profile
-from.forms import UpdateProfileForm
+from.forms import UpdateProfileForm,NeighbourhoodForm
 from django.contrib.auth.models import User
 # Create your views here.
 def home(request):
  return render(request,'index.html')
+def neighborhood(request):
+    if request.method == 'POST':
+        form = NeighborhoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            neighborhood = form.save(commit=False)
+            neighborhood.admin = request.user.profile
+            neighborhood.save()
+            messages.success(request,'Neighborhood created successfully.')
+            return redirect('neighborhood')
+    else:
+        form = NeighborhoodForm()
+        neighborhoods = Neighborhood.objects.all()
+        neighborhoods = neighborhoods[::-1]
+    return render(request, 'neighborhood.html', {'form': form, 'neighborhoods': neighborhoods})
+
+
 def addpost(request):
  return render(request,'add_post.html')
 def addbusiness(request):
