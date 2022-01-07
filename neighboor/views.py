@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render,redirect
-from .models import Profile,UpdateProfileForm
+from .models import Profile
+from.forms import UpdateProfileForm
 from django.contrib.auth.models import User
 # Create your views here.
 def home(request):
  return render(request,'index.html')
+def addpost(request):
+ return render(request,'add_post.html')
+def addbusiness(request):
+ return render(request,'add_business.html')
 def profile(request,user_id):
 
     current_user=get_object_or_404(User,id=user_id)

@@ -29,7 +29,9 @@ class NeighbourHood(models.Model):
     occupants_count = models.IntegerField(default=0)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    police_cont=models.IntegerField(null=True,blank=True)
+    hospital_cont=models.IntegerField(null=True,blank=True)
+    photo=CloudinaryField(blank=True,)
 
     def create_neigborhood(self):
         self.save()
@@ -38,10 +40,7 @@ class NeighbourHood(models.Model):
     def delete_neighbourhood(cls, id):
         cls.objects.filter(id=id).delete()
 
-    @classmethod
-    def update_neighbourhood(cls, id):
-        cls.objects.filter(id=id).update()
-
+    
     @classmethod
     def search_by_name(cls, search_term):
         hood = cls.objects.filter(name__icontains=search_term)
@@ -139,8 +138,5 @@ class Post(models.Model):
         self.update()
 
 
-class UpdateProfileForm(ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['bio','profile_photo']
+
 
