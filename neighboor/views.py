@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render,redirect
-from .models import Profile
+from .models import NeighbourHood, Profile
 from.forms import UpdateProfileForm,NeighbourhoodForm
 from django.contrib.auth.models import User
+from django.contrib import messages
 # Create your views here.
 def home(request):
  return render(request,'index.html')
 def neighborhood(request):
     if request.method == 'POST':
-        form = NeighborhoodForm(request.POST, request.FILES)
+        form = NeighbourhoodForm(request.POST, request.FILES)
         if form.is_valid():
             neighborhood = form.save(commit=False)
             neighborhood.admin = request.user.profile
@@ -16,10 +17,10 @@ def neighborhood(request):
             messages.success(request,'Neighborhood created successfully.')
             return redirect('neighborhood')
     else:
-        form = NeighborhoodForm()
-        neighborhoods = Neighborhood.objects.all()
+        form = NeighbourhoodForm()
+        neighborhoods = NeighbourHood.objects.all()
         neighborhoods = neighborhoods[::-1]
-    return render(request, 'neighborhood.html', {'form': form, 'neighborhoods': neighborhoods})
+    return render(request, 'profile.html', {'form': form, 'neighborhoods': neighborhoods})
 
 
 def addpost(request):
