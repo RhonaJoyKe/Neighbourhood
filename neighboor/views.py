@@ -52,7 +52,7 @@ def update_profile(request):
         form=UpdateProfileForm()
     return render(request,'profile/update_profile.html',{'form':form})
 @login_required
-def my_neighborhood(request, neighborhood_id):
+def neighborhood(request, neighborhood_id):
     neighborhood = NeighbourHood.objects.get(id=neighborhood_id)
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
