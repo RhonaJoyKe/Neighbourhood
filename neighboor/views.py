@@ -46,7 +46,7 @@ def update_profile(request):
             return redirect('profile')
     else:
         form=UpdateProfileForm()
-    return render(request,'profile/update_profile.html',{'form':form})
+    return render(request,'profile.html',{'form':form})
 @login_required
 def neighborhood(request, neighborhood_id):
     neighborhood = NeighbourHood.objects.get(id=neighborhood_id)
