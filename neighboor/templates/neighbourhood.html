@@ -11,13 +11,30 @@
             data-target="#postModal">Create Post</button>
 
         {% if request.user.profile.neighbourhood == neighborhood %}
-        <a href="{% url 'leavehood' neighborhood.id %}" class="btn btn-outline-danger btn-sm">Leave {{neighborhood.name}}</a>
+        <a href="{% url 'leavehood' neighborhood.id %}" class="btn btn-outline-danger btn-sm" id="lhood">Leave {{neighborhood.name}}</a>
         {% endif %}
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Welcome to{{neighborhood.name}} Neighborhood</h2>
+     <img src="{{neighborhood.photo.url}}" class="card-img-top" alt="neighborhood photo">
+    <div class="row" id="buttons">
+        <div class="business"></div>
+        <div class="post"></div>
+
+    </div>
+        </div>
+        <div class="col-md-4">
+            Businesses Around
+        </div>
+        <div class="col-md-4">
+            Top Posts
+        </div>
+
     
-    <h2>{{neighborhood.name}}</h2>
-    <img src="{{neighborhood.photo.url}}" class="card-img-top" alt="neighborhood photo">
+ </div>
 </div>
+
 
 <!-- business modal -->
 <div class="modal fade" tabindex="-1" id="biznaModal" role="dialog">
@@ -67,6 +84,12 @@
         </div>
     </div>
 </div>
-
+<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+          
+    $('#lhood').on('click', function () {
+        return confirm('Are you sure you want to leave {{neighborhood.name}}?');
+    });
+</script>
 
 {% endblock %}
