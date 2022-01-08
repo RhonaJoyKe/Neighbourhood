@@ -86,7 +86,7 @@ def leave_hood(request, neighborhood_id):
     neighborhood = get_object_or_404(NeighbourHood, id=neighborhood_id)
     request.user.profile.neighbourhood = None
     request.user.profile.save()
-    return redirect('neighborhood')
+    return redirect('home')
 
 
 

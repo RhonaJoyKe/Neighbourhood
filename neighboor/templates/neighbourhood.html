@@ -9,8 +9,9 @@
             data-target="#biznaModal">+ Business</button>
         <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal"
             data-target="#postModal">Create Post</button>
-        {% if request.user.profile.neighborhood == neighborhood %}
-        <a href="{% url 'leave_neighborhood' neighborhood.id %}" class="btn btn-outline-danger btn-sm">Leave {{neighborhood.name}}</a>
+
+        {% if request.user.profile.neighbourhood == neighborhood %}
+        <a href="{% url 'leavehood' neighborhood.id %}" class="btn btn-outline-danger btn-sm">Leave {{neighborhood.name}}</a>
         {% endif %}
     </div>
     <h2>{{neighborhood.name}}</h2>
