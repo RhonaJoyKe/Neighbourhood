@@ -57,7 +57,6 @@ def neighborhood(request, neighborhood_id):
             post = form_post.save(commit=False)
             post.neighbourhood = neighborhood
             post.user = request.user
-            
             post.save()
             messages.success(request, 'Your post has been added successfully.')
         if business_form.is_valid():
