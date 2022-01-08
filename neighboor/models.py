@@ -100,6 +100,8 @@ class Business(models.Model):
     description = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+    image = CloudinaryField('image', blank=True, null=True)
+
     # create business
     def create_business(self):
         self.save()
