@@ -22,7 +22,7 @@
             {%endif%}
             
             <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
-                        data-target="#updateprofile">+ create Neighborhood</button>
+                        data-target="#updateprofile">Update Profile</button>
                 
               
         </div>
@@ -47,7 +47,7 @@
         <div class="col-md-4"></div>
    
 </div>
-<div class="modal fade" tabindex="-1" id="postModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="updateprofile" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -59,7 +59,7 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {% bootstrap_form form %}
+                    {{ form }}
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -69,4 +69,4 @@
         </div>
     </div>
 </div>
-{%endblock%}
+{% endblock %}
