@@ -12,7 +12,7 @@ def home(request):
         form = NeighbourhoodForm(request.POST, request.FILES)
         if form.is_valid():
             neighborhood = form.save(commit=False)
-            neighborhood.admin = request.user.profile
+            neighborhood.admin = request.user
             neighborhood.save()
             messages.success(request,'Neighborhood created successfully.')
             return redirect('home')
@@ -55,17 +55,18 @@ def neighborhood(request, neighborhood_id):
         business_form = BusinessForm(request.POST, request.FILES)
         if form_post.is_valid():
             post = form_post.save(commit=False)
-            post.neighborhood = neighborhood
+            post.neighbourhood = neighborhood
             post.user = request.user
+            
             post.save()
             messages.success(request, 'Your post has been added successfully.')
         if business_form.is_valid():
             business = business_form.save(commit=False)
-            business.neighborhood = neighborhood
+            business.neighbourhood = neighborhood
             business.user = request.user
             business.save()
             messages.success(request, 'Business added successfully.')
-            return redirect('neighborhood', neighborhood_id)
+            return redirect('neighbourhood', neighborhood_id)
     else:
         post_form = PostForm()
         business_form = BusinessForm()

@@ -75,7 +75,7 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
     def __str__(self):
-        return self.user
+        return str(self.user)
 
     @classmethod
     def get_profile_by_user(cls, user):
@@ -122,7 +122,6 @@ class Post(models.Model):
     content = models.TextField(blank=True, null=True)
     image = CloudinaryField('image', blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
    
