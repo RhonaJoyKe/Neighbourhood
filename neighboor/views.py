@@ -55,10 +55,10 @@ def update_profile(request):
 def neighborhood(request, neighborhood_id):
     neighborhood = NeighbourHood.objects.get(id=neighborhood_id)
     if request.method == 'POST':
-        post_form = PostForm(request.POST, request.FILES)
+        form_post = PostForm(request.POST, request.FILES)
         business_form = BusinessForm(request.POST, request.FILES)
-        if post_form.is_valid():
-            post = post_form.save(commit=False)
+        if form_post.is_valid():
+            post = form_post.save(commit=False)
             post.neighborhood = neighborhood
             post.user = request.user
             post.save()
@@ -69,7 +69,7 @@ def neighborhood(request, neighborhood_id):
             business.user = request.user
             business.save()
             messages.success(request, 'Business added successfully.')
-            return redirect('my_neighborhood', neighborhood_id)
+            return redirect('neighborhood', neighborhood_id)
     else:
         post_form = PostForm()
         business_form = BusinessForm()
@@ -84,10 +84,10 @@ def join_hood(request, neighborhood_id):
     neighborhood = get_object_or_404(NeighbourHood, id=neighborhood_id)
     request.user.profile.neighborhood = neighborhood
     request.user.profile.save()
-    return redirect('my_neighborhood', neighborhood_id = neighborhood.id)
+    return redirect('neighbourhood', neighborhood_id = neighborhood.id)
 @login_required
 def leave_hood(request, neighborhood_id):
-    neighborhood = get_object_or_404(Neighborhood, id=neighborhood_id)
+    neighborhood = get_object_or_404(NeighbourHood, id=neighborhood_id)
     request.user.profile.neighborhood = None
     request.user.profile.save()
     return redirect('neighborhood')
