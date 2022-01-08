@@ -6,9 +6,8 @@ from.forms import UpdateProfileForm,NeighbourhoodForm,PostForm,BusinessForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 # Create your views here.
+
 def home(request):
- return render(request,'index.html')
-def neighborhood(request):
     if request.method == 'POST':
         form = NeighbourhoodForm(request.POST, request.FILES)
         if form.is_valid():
@@ -16,18 +15,15 @@ def neighborhood(request):
             neighborhood.admin = request.user.profile
             neighborhood.save()
             messages.success(request,'Neighborhood created successfully.')
-            return redirect('neighborhood')
+            return redirect('home')
     else:
         form = NeighbourhoodForm()
         neighborhoods = NeighbourHood.objects.all()
         neighborhoods = neighborhoods[::-1]
-    return render(request, 'profile.html', {'form': form, 'neighborhoods': neighborhoods})
+    return render(request, 'index.html', {'form': form, 'neighborhoods': neighborhoods})
 
 
-def addpost(request):
- return render(request,'add_post.html')
-def addbusiness(request):
- return render(request,'add_business.html')
+
 def profile(request,user_id):
 
     current_user=get_object_or_404(User,id=user_id)

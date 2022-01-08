@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-4"><h5>Hello World</h5></div>
         <div class="col-md-4">
-            <button type="button" class="btn btn-primary">Create Neighbourhood</button>
+            <a type="button" class="btn btn-primary" data-bs-target="#createhood" style="margin-top: 10px;">Create Neighbourhood</a>
         </div>
         <div class="col-md-4">
             {%if neighbourhood%}
@@ -18,10 +18,11 @@
                   <h4 class="card-title">{{neighborhood.name}}</h4>
                   <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
                   {%if not request.user.profile.neighbourhood%}
-                    <a href="{% url 'joinhood'neighbourhood.id%}" class="btn btn-primary">Join {{neighbourhood.name}}</a>
+                    <a href="{% url 'joinhood' neighbourhood.id %}" class="btn btn-primary">Join {{neighbourhood.name}}</a>
+                {%endif%}
                 </div>
               </div>
-            {%endfor%}
+            {% endfor %}
             {%else%}
             <p>There are no Available Neighbourhoods</p>
             {%endif%}
@@ -30,4 +31,26 @@
     
 
 </div>
+<div class="modal fade" tabindex="-1" id="createhood" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+              </div>
+              <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form> 
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+        </div>
+    </div>
+  </div>
 {%endblock%}
