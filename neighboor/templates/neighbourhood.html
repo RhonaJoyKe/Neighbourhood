@@ -81,11 +81,12 @@
             <img src="{{business.image.url}}" class="card-img-top" alt="neighborhood photo">
            
         </div>
-        {%endfor%}
+        {% endfor %}
+        {% for business in business %}
         <div class="col-md-4">
             Top Posts
         </div>
-
+        {% endfor %}
     </div>
 
 </div>
