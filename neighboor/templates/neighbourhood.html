@@ -75,21 +75,44 @@
             </div>
 
         </div> 
-        {% for business in business %}
+        
         <div class="col-md-4">
             Businesses Around
-            <img src="{{business.image.url}}" class="card-img-top" alt="neighborhood photo">
-           
+            {%if posts%}
+            {% for post in posts%}
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:100%">
+                <div class="card-body">
+                  <h4 class="card-title">{{post.title}}</h4>
+                  
+                  
+                </div>
+              </div>
+            {% endfor %}
+            {%else%}
+            <p>There are no Available Businesses</p>
+            {%endif%}
+        
         </div>
-        {% endfor %}
-        {% for business in business %}
         <div class="col-md-4">
             Top Posts
-        </div>
-        {% endfor %}
+            {%if posts%}
+            {% for post in posts%}
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:100%">
+                <div class="card-body">
+                  <h4 class="card-title">{{post.title}}</h4>
+                  
+                  
+                </div>
+              </div>
+            {% endfor %}
+            {%else%}
+            <p>There are no Available posts</p>
+            {%endif%}
     </div>
 
-</div>
+
 <div class="col-md-4">{% if request.user.profile.neighbourhood == neighborhood %}
     <a href="{% url 'leavehood' neighborhood.id %}" class="btn btn-outline-danger btn-sm" id="lhood">Leave
         {{neighborhood.name}}</a>
