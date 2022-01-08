@@ -4,3 +4,6 @@
 .navbar{
     background-color: blue;
 }
+#buttons{
+    display: flex;
+}
