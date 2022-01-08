@@ -32,8 +32,13 @@
 
     </div>
     <div class="row">
+        
         <div class="col-md-4">
-            <button type="button" class="btn btn-primary">Join Neighbourhood</button>
+            {% if user.profile.neighbourhood %}
+           <a href="{% url 'neighbourhood' user.profile.neighbourhood.id %}" class="btn btn-dark"> {{user.profile.neighbourhood.name}}</a>
+          {% else %}
+          <a href="/" class="btn btn-dark">Choose Hood</a>
+          {% endif %}
             
         </div>
         <div class="col-md-4">
