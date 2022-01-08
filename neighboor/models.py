@@ -11,7 +11,7 @@ from django.forms import ModelForm, widgets
 class Location(models.Model):
     name = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
 
 
     # save location

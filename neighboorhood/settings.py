@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,7 +89,11 @@ DATABASES = {
     }
 }
 
-
+cloudinary.config(
+    cloud_name='dbalxadqx',
+    api_key='888255573867367',
+    api_secret='Ii9nAE7eZU9vii96eyeCDb8WlZ0',
+)
 # Password validation
 
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
