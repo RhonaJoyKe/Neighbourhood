@@ -78,12 +78,12 @@
         
         <div class="col-md-4">
             Businesses Around
-            {%if posts%}
-            {% for post in posts%}
+            {%if business%}
+            {% for business in business%}
             <div class="card" style="width:400px">
-                <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:100%">
+                <img class="card-img-top" src="{{business.image.url}}" alt="Card image" style="width:100%">
                 <div class="card-body">
-                  <h4 class="card-title">{{post.title}}</h4>
+                  <h4 class="card-title">{{business.name}}</h4>
                   
                   
                 </div>

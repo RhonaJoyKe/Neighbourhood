@@ -53,7 +53,7 @@ class NeighbourHood(models.Model):
         return hood
 
     def __str__(self):
-        return self.name
+        return "%s neighborhood" % self.name
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
