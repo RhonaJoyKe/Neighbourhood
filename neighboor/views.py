@@ -24,17 +24,10 @@ def home(request):
 
 
 
-def profile(request,user_id):
-
-    current_user=get_object_or_404(User,id=user_id)
-    # current_user = request.user
-    
-    profile = Profile.objects.filter(user = current_user.id).first()
-    
-    return render(request, 'profile/profile.html', {"profile": profile})
   
-def update_profile(request):
+def profile(request,user_id):
   	#Get the profile
+    current_user=get_object_or_404(User,id=user_id)
     current_user=request.user
     profile = Profile.objects.filter(id=current_user.id).first()
     if request.method == 'POST':
@@ -46,7 +39,7 @@ def update_profile(request):
             return redirect('profile')
     else:
         form=UpdateProfileForm()
-    return render(request,'profile.html',{'form':form})
+    return render(request,'profile/profile.html',{'form':form})
 @login_required
 def neighborhood(request, neighborhood_id):
     neighborhood = NeighbourHood.objects.get(id=neighborhood_id)
