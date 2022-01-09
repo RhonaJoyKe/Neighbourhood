@@ -51,7 +51,7 @@ class NeighbourHood(models.Model):
     def find_neigborhood(cls, id):
         hood = cls.objects.get(id=id)
         return hood
-
+    
     def __str__(self):
         return "%s neighborhood" % self.name
 class Profile(models.Model):
@@ -89,10 +89,7 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
-    @classmethod
-    def search_profiles(cls, search_term):
-        profiles = cls.objects.filter(user__username__icontains=search_term).all()
-        return profiles
+   
 # business class model
 class Business(models.Model):
     name = models.CharField(max_length=50)

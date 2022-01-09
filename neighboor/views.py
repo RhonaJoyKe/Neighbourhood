@@ -40,6 +40,15 @@ def profile(request,user_id):
     else:
         form=UpdateProfileForm()
     return render(request,'profile/profile.html',{'form':form})
+def search_hood(request):
+
+    if 'name' in request.GET and request.GET["name"]:
+        search_term = request.GET.get("name")
+        searched_hoods = NeighbourHood.search_by_name(search_term)
+        print(searched_hoods)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"hoods": searched_hoods})
 @login_required
 def neighborhood(request, neighborhood_id):
     neighborhood = NeighbourHood.objects.get(id=neighborhood_id)
