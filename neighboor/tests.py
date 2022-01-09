@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Post, Category, Profile, Location, NeighbourHood, Business, Contact
+from .models import Post,  Profile, Location, NeighbourHood, Business
 from django.contrib.auth.models import User
 
 
@@ -16,7 +16,7 @@ class NeighbourhoodTestClass(TestCase):
         )
         self.neighbourhood = NeighbourHood(
             name='Test Neighbourhood', location=self.location, occupants_count=100, admin_id=self.admin.id)
-
+    
     def test_instance(self):
         self.assertTrue(isinstance(self.neighbourhood, NeighbourHood))
 
@@ -50,60 +50,3 @@ class LocationTestClass(TestCase):
         self.location.delete()
         locations = Location.objects.all()
         self.assertTrue(len(locations) == 0)
-
-
-# Category Model Tests
-class CategoryTestClass(TestCase):
-    def setUp(self):
-        self.category = Category(name='Test Category')
-
-    def test_instance(self):
-        self.assertTrue(isinstance(self.category, Category))
-
-    def test_save_method(self):
-        self.category.save()
-        categories = Category.objects.all()
-        self.assertTrue(len(categories) > 0)
-
-    def test_delete_method(self):
-        self.category.save()
-        self.category.delete()
-        categories = Category.objects.all()
-        self.assertTrue(len(categories) == 0)
-
-
-
-
-# Post Model Tests
-class PostTestClass(TestCase):
-    def setUp(self):
-        # create a user
-        self.user = User.objects.create_user(
-            username='developer',
-            password='password'
-        )
-        self.location = Location(name='Test Location')
-        self.location.save_location()
-        self.category = Category(name='Test Category')
-        self.category.save()
-        self.post = Post(title='Test Post', content='Test Content',
-                         location=self.location, category=self.category,user=self.user)
-
-    def test_instance(self):
-        self.assertTrue(isinstance(self.post, Post))
-
-    def test_save_method(self):
-        self.post.save()
-        posts = Post.objects.all()
-        self.assertTrue(len(posts) > 0)
-
-    def test_delete_method(self):
-        self.post.save()
-        self.post.delete_post()
-        posts = Post.objects.all()
-        self.assertTrue(len(posts) == 0)
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
