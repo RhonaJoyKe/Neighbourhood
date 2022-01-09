@@ -7,3 +7,14 @@
 #buttons{
     display: flex;
 }
+.update{
+    box-shadow: 5px 5px 5px 5px grey;
+    height:80px;
+    width:150px;
+    background-color: coral;
+}
+#updatebtn{
+    margin-left: 25px;
+    margin-top:20px;
+    
+}
