@@ -17,10 +17,12 @@
               </li>
             
 
-            <form class="me-auto search-form " target="_self" action="">
-                <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field">
+            <form class="me-auto search-form " target="_self" action="{% url 'search_hoods' %}">
+                <div class="d-flex align-items-center">
+                    <label class="form-label d-flex mb-0" for="search-field">
                     
-                    </label><input class="form-control search-field" type="search" placeholder="Search " id="search-field" name="search_term">
+                    </label>
+                    <input class="form-control search-field" type="search" placeholder="Search " id="search-field" name="name">
                 </div>
             </form>
             {% if user.is_authenticated %}
