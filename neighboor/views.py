@@ -6,7 +6,7 @@ from.forms import UpdateProfileForm,NeighbourhoodForm,PostForm,BusinessForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 # Create your views here.
-
+@login_required
 def home(request):
     if request.method == 'POST':
         form = NeighbourhoodForm(request.POST, request.FILES)
