@@ -14,12 +14,12 @@
         {%endfor%}
 
         </div>
-        
-        <div class="col-md-8">
-            {% if neighborhoods %}
+        {% if neighborhoods %}
             {% for neighbourhood in neighborhoods %}
+        <div class="col-md-6">
+            
 
-            <div class="card" style="width:800px">
+            <div class="card">
                 <img class="card-img-top" src="{{neighbourhood.photo.url}}" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">{{neighborhood.name}}</h4>

@@ -1,6 +1,4 @@
-body{
-    background-color: black;
-}
+
 #profile{
     display: flex;
 }
@@ -26,6 +24,5 @@ text-decoration: none;
 }
 .profilebtn{
     box-shadow: 5px 5px 5px 5px grey;
-    height:100px;
-    width:300px;
+    
 }
