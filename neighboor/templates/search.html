@@ -4,21 +4,22 @@
 
 
     <div class="row">
-        {% if images%}
-        <h2>Found {{ images|length }} of searched term {{message}}</h2>
+        {% if hoods %}
+        <h2>Found {{ hoods|length }} of searched term {{message}}</h2>
         {% else %}
-        <h2> Found 0 images for the search term {{message}}</h2>
+        <h2> Found 0 hood for the search term {{message}}</h2>
         {% endif %}
 
     </div>
     <div class="row">
        
-        {% if images %}
-        {% for image in images %}
+        {% if hoods %}
+        {% for hood in hoods %}
         <div class=" col-md-4">
-            <img src="{{image.image.url}}" class="img-responsive" alt="Image" height="300px"width="100%">
+            {{hood.name}}
         </div>
         {% endfor %}
         {% endif %}
     </div>
 </div>
+{% endblock %}

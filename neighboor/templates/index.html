@@ -10,7 +10,7 @@
             <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
                         data-target="#hoodModal">+ create Neighborhood</button>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             {%if neighborhoods%}
             {% for neighbourhood in neighborhoods%}
             <div class="card" style="width:400px">
@@ -28,6 +28,7 @@
             <p>There are no Available Neighbourhoods</p>
             {%endif%}
         </div>
+        <div class="col-md-2"></div>
     </div>
     
 
