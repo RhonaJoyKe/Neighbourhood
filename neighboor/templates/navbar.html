@@ -16,17 +16,17 @@
                     
                     </label>
                     <input class="form-control search-field" type="search" placeholder="Search " id="search-field" name="name">
-                    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-dark my-2 my-sm-0"  style="margin-left:10px"type="submit">Search</button>
                 </div>
             </form>
             {% if user.is_authenticated %}
-            <a class="btn btn-light action-button" role="button" style="margin-right: 20px;" href="/user/">Profile  </a>
+            <a class="btn btn-warning action-button" role="button" style="margin-right: 20px;" href="/user/">Profile  </a>
             {% else %}
             <span class="nav-link text-dark">ARE YOU A MEMBER? <a href="/accounts/login"
                     class="text-dark"><strong>LOG IN</strong></a></span>
             {% endif %}
             
-                <a class="btn btn-light action-button" role="button" href="/logout">Logout</a>
+                <a class="btn btn-dark action-button" role="button" href="/logout">Logout</a>
                 
         </div>
     </div>

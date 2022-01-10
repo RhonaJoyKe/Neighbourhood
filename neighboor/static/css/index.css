@@ -3,7 +3,7 @@
     display: flex;
 }
 .navbar{
-    background-color: blue;
+    background-color: blueviolet;
 }
 #buttons{
     display: flex;
@@ -26,4 +26,7 @@ text-decoration: none;
 .profilebtn{
     box-shadow: 5px 5px 5px 5px grey;
     
+}
+#footer{
+    background-color:blueviolet;
 }

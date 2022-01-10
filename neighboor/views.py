@@ -27,6 +27,7 @@ def home(request):
   
 def profile(request):
   	#Get the profile
+    
     current_user=request.user
     profile = Profile.objects.filter(id=current_user.id).first()
     if request.method == 'POST':

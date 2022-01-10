@@ -8,13 +8,14 @@
 
         <div class="col-md-2">
             
-            {% if user.profile.neighbourhood %}
-            <a href="{% url 'neighbourhood' user.profile.neighbourhood.id %}" class="btn btn-dark"> {{user.profile.neighbourhood.name}}</a>
-           {%endif%}
+        {% if user.profile.neighbourhood %}
+            <a href="{% url 'neighbourhood' user.profile.neighbourhood.id %}" class="btn btn-warning"> {{user.profile.neighbourhood.name}}</a>
+           {%endif%} 
+           
         <div class="about">
             <img src="https://c.tenor.com/6TKrKIBuOYkAAAAC/welcome.gif" alt="" height="400px" width="200px">
-        </div>
-        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#hoodModal">+
+        </div> <br>
+        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#hoodModal">+
             create Neighborhood</button> <br>
         </div>
         
@@ -33,7 +34,7 @@
                          <em>Hospital Contacts:</em>  {{neighbourhood.hospital_cont}}<br>
                          <em>Created at:</em> {{neighbourhood.created_at}}<br>
                     {%if not request.user.profile.neighbourhood%} <p>
-                    <a href="{% url 'joinhood' neighbourhood.id %}" class="btn btn-primary">Join
+                    <a href="{% url 'joinhood' neighbourhood.id %}" class="btn btn-dark">Join
                         {{neighbourhood.name}}</a>
                     {%endif%}
                 </div>
