@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-6">
-
+         <div class="profilebtn">
             {% if profile.profile_photo%}
             <img src="{{profile.profile_photo.url}}" alt="" height="300px" class="img-responsive" width="100%"
                 style="border-radius: 50%;">
@@ -21,6 +21,7 @@
             {%else%}
             <p>No bio</p>
             {%endif%}
+        </div>
             <div class="update">
                 <button type="button" id="updatebtn" class="btn btn-outline-dark btn-sm" data-toggle="modal"
                 data-target="#updateprofile">Update Profile</button>

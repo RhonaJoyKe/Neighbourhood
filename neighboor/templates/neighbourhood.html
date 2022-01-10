@@ -5,9 +5,21 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <h2>Welcome to{{neighborhood.name}} Neighborhood</h2>
+        <div class="col-md-3">
+            <h2 style="color: blueviolet;">Welcome  to {{neighborhood.name}} Neighborhood</h2>
             <img src="{{neighborhood.photo.url}}" class="card-img-top" alt="neighborhood photo"><br><br>
+             {% for neighbourhood in neighborhoods %}
+             
+               {{neighbourhood.location}}
+                {{neighbourhood.occupants_count}}
+                {{neighbourhood.police_cont}}
+                {{neighbourhood.hospital_cont}}
+                {{neighbourhood.created_at}}
+                
+                
+
+                {% endfor %}
+            
             <div class="row">
                 <div class="business"> <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
                         data-target="#biznaModal">+ Business</button></div>
@@ -75,15 +87,15 @@
             </div>
 
         </div> 
-        
-        <div class="col-md-4">
-            Businesses Around
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h4 style="color: blueviolet;">Businesses Around</h4>
             {%if business%}
             {% for business in business%}
             <div class="card" style="width:400px">
-                <img class="card-img-top" src="{{business.image.url}}" alt="Card image" style="width:100%">
+                <img class="card-img-top" src="{{business.image.url}}" alt="Card image" style="width:80%">
                 <div class="card-body">
-                  <h4 class="card-title">{{business.name}}</h4>
+                  <h5 class="card-title" >{{business.name}}</h4>
                   
                   
                 </div>
@@ -94,12 +106,13 @@
             {%endif%}
         
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-4">
-            Top Posts
+            <h4 style="color: blueviolet;">Top Posts</h4>
             {%if posts%}
             {% for post in posts%}
             <div class="card" style="width:400px">
-                <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:100%">
+                <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:80%;">
                 <div class="card-body">
                   <h4 class="card-title">{{post.title}}</h4>
                   
