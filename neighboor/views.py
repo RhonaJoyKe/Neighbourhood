@@ -25,9 +25,8 @@ def home(request):
 
 
   
-def profile(request,user_id):
+def profile(request):
   	#Get the profile
-    current_user=get_object_or_404(User,id=user_id)
     current_user=request.user
     profile = Profile.objects.filter(id=current_user.id).first()
     if request.method == 'POST':
